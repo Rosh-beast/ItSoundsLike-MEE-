@@ -25,6 +25,14 @@ public class GhostCollector : MonoBehaviour
         ghosts[counter].SetActive(true);
         Debug.Log("Ghost");
             
+        if(counter == ghosts.Length-1)
+        {
+            GameObject other;
+          /*  if(other.gameObject.tag == "Ghost")
+            {
+
+            }*/
+        }
     }
 
 }
