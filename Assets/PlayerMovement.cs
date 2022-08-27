@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
-    float turnSmoothVelocity;
+    public float turnSmoothVelocity;
 
     private void Update()
     {
@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        PlayerMOvement();
+        MovePlayer();
 
     }
 
-    void PlayerMOvement()
+     public void MovePlayer()
     {
         float forward = Input.GetAxis("Horizontal");
         float sidewise = Input.GetAxis("Vertical");
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         if(playerMovement.magnitude >= 0.1)
         {
             float targetAngle = Mathf.Atan2(playerMovement.x, playerMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity,1f);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity,turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f,angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0) * Vector3.forward;
