@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - ChainPoint
   - StorePos
+  - MeGhost
   layers:
   - Default
   - TransparentFX
