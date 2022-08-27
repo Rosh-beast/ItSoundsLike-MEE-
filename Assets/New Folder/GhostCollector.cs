@@ -12,7 +12,7 @@ public class GhostCollector : MonoBehaviour
     {
         if (counter < ghosts.Length)
         {
-            if (other.gameObject.tag == "MeGhost")
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
             {
                 Destroy(other.gameObject);
                 PickGhost();
@@ -27,11 +27,10 @@ public class GhostCollector : MonoBehaviour
             
         if(counter == ghosts.Length-1)
         {
-            GameObject other;
-          /*  if(other.gameObject.tag == "Ghost")
-            {
-
-            }*/
+            GameObject other = GameObject.FindGameObjectWithTag("MeGhost");
+            other.GetComponent<SphereCollider>().radius = 5;
+            other.GetComponent<MeshRenderer>().material.color = Color.red;
+        
         }
     }
 
