@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         MovePlayer();
-
+        Debug.Log("Hello");
     }
 
      public void MovePlayer()
