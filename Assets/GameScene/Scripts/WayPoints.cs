@@ -8,6 +8,8 @@ public class WayPoints : MonoBehaviour
     NavMeshAgent agent;
     int waypointIndex;
     Vector3 target;
+    public Transform player2;
+    public float Space;
     //public Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -25,18 +27,22 @@ public class WayPoints : MonoBehaviour
             updateDestination();
             iterateWaypoint();
             //anim.Play("Walking");
+            
         }
-
-
+        Space = Vector3.Distance(transform.position, player2.position);
+        if (Space >10)
+        {
+            updateDestination();
+        }
     }
 
-    void updateDestination()
+    public void updateDestination()
     {
         target = waypoint[waypointIndex].position;
         agent.SetDestination(target);
 
     }
-    void iterateWaypoint()
+    public void iterateWaypoint()
     {
         waypointIndex++;
         if (waypointIndex == waypoint.Length)

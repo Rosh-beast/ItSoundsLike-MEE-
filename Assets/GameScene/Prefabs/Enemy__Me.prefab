@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3784635600071868538}
   - component: {fileID: 3784635600071868539}
   - component: {fileID: 8770740703632041041}
+  - component: {fileID: 6736197203635379760}
   m_Layer: 0
   m_Name: Enemy__Me
   m_TagString: Untagged
@@ -116,6 +117,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  player2: {fileID: 0}
+  Space: 0
 --- !u!195 &3784635600071868539
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -153,3 +156,16 @@ MonoBehaviour:
   agent: {fileID: 3784635600071868539}
   player: {fileID: 4413263626504930196, guid: befcbc56c15cde94191ab8b54820fca8, type: 3}
   playerInSightRange: 0
+  playerNotInRange: 0
+--- !u!114 &6736197203635379760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784635600071868516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b9e9a130d7bce4db9ca079fbaf8c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

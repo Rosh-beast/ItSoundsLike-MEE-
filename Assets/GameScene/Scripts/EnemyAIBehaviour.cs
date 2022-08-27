@@ -7,9 +7,12 @@ public class EnemyAIBehaviour : MonoBehaviour
     public NavMeshAgent agent ;
     public Transform player;
 
+    WayPoints EnemyProperties;
+
     private float distance;
 
     public float playerInSightRange;
+    public float playerNotInRange;
     
 
     void Start()
@@ -27,11 +30,14 @@ public class EnemyAIBehaviour : MonoBehaviour
             ChasePlayer();
 
         }
+        
     }
 
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
     }
+
+   
     
 }
