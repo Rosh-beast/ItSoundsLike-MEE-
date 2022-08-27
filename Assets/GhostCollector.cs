@@ -23,7 +23,7 @@ public class GhostCollector : MonoBehaviour
     void PickGhost()
     {
         ghosts[counter].SetActive(true);
-        Debug.Log("GHOST");
+        
             
     }
 
