@@ -4,29 +4,50 @@ using UnityEngine;
 
 public class PlayerProperty : MonoBehaviour
 {
-    public bool isAParent = false;
-    public GameObject[] targets;
+    [SerializeField] Transform holdArea;
+    [SerializeField] float pickupRange;
 
-    private void Start()
-    {
-       // target = 
-    }
+    GameObject target;
+    Rigidbody targetRB;
+
     private void Update()
     {
-        if(isAParent)
+
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            foreach (GameObject target in targets)
+            Debug.Log("pick");
+            if (target == null)
             {
-                target.transform.SetParent(this.transform);
+                Debug.Log("pick1");
+                RaycastHit hit;
+               if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
+                {
+                    Debug.Log("pick2");
+                    if (hit.transform.tag == "Gain")
+                    {
+                        Debug.Log("pick3");
+                        Pickup(hit.transform.gameObject);
+                    }
+                    
+                }
             }
+
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Pickup(GameObject heldObj)
     {
-        if(other.gameObject.CompareTag("Gain"))
-        {
-            isAParent = true;
-        }
+         if(heldObj.GetComponent<Rigidbody>())
+         {
+             targetRB = heldObj.GetComponent<Rigidbody>();
+             targetRB.useGravity = false;
+             targetRB.constraints = RigidbodyConstraints.FreezeRotation;
+
+             targetRB.transform.parent = holdArea;
+             target = heldObj; 
+         }
+
     }
+
+  
 }
