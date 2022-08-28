@@ -31,7 +31,7 @@ public class GhostCollector : MonoBehaviour
         {
             Time.timeScale = 0;
             Debug.Log("canvas activated");
-            tutorialCanvas.gameObject.SetActive(true);
+          //  tutorialCanvas.gameObject.SetActive(true);
             mainCanvas.gameObject.SetActive(false);
 
             if (Input.GetKeyDown("escape"))
