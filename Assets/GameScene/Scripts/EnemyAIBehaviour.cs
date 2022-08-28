@@ -12,7 +12,7 @@ public class EnemyAIBehaviour : MonoBehaviour
     private float distance;
 
     public float playerInSightRange;
-    public float playerNotInRange;
+   // public float playerNotInRange;
     
 
     void Start()
