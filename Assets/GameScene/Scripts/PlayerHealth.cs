@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public FadeInFadeOut fadeEffector;
     public float timer = 1f;
     public Image[] heart;
+    public bool isFaded = false;
 
     void Start()
     {
@@ -44,14 +45,13 @@ public class PlayerHealth : MonoBehaviour
             Destroy(heart[0]);
             Destroy(gameObject);
             StartCoroutine(ScreenFade());
-
         }
     }
 
     IEnumerator ScreenFade()
     {
         fadeEffector.StartFadeIn();
-        fadeEffector.StartFadeOut();
+    
         yield return new WaitForSeconds(1);
     }
 

@@ -7,15 +7,23 @@ public class FadeInFadeOut : MonoBehaviour
 {
     public Image fadeEffect;
     public float timer;
+    public bool isFadeOut = false;
     Color c;
-   public float alpha;
 
     private void Start()
     {
         c = fadeEffect.color;
-        alpha = c.a;
+        c.a = 0;
     }
 
+    private void Update()
+    {
+        RestartGame();
+    }
+    public void StartFadeIn()
+    {
+        StartCoroutine(FadeIn());
+    }
     IEnumerator FadeIn()
     {
         for(float i = 0.05f; i<=1; i+=0.05f)
@@ -24,31 +32,14 @@ public class FadeInFadeOut : MonoBehaviour
             fadeEffect.color = c;
             yield return new WaitForSeconds(1);
         }
-        alpha = 1f;
+        isFadeOut = true;
     }
 
-    public void StartFadeIn()
+    void RestartGame()
     {
-        StartCoroutine(FadeIn());
-    }
-    public void StartFadeOut()
-    {
-        StartCoroutine(FadeOut());
-    }
-
-    IEnumerator FadeOut()
-    {
-        if (alpha == 1f)
+        if(isFadeOut)
         {
-            for (float i = 1; i >= -0.05f; i -= 0.05f)
-            {
-                c.a = i;
-                fadeEffect.color = c;
-                yield return new WaitForSeconds(1);
-            }
+            Debug.Log("true");
         }
     }
-
-    
-
 }
