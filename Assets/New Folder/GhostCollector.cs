@@ -6,7 +6,7 @@ public class GhostCollector : MonoBehaviour
 {
     public GameObject[] ghosts;
     public int counter = 0;
-
+    public GhostLoader Loader;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,18 +20,17 @@ public class GhostCollector : MonoBehaviour
             }
         }
     }
-    void PickGhost()
+    public void PickGhost()
     {
-        ghosts[counter].SetActive(true);
-        Debug.Log("Ghost");
-            
-        if(counter == ghosts.Length-1)
-        {
-            GameObject other = GameObject.FindGameObjectWithTag("MeGhost");
-            other.GetComponent<SphereCollider>().radius = 5;
-            other.GetComponent<MeshRenderer>().material.color = Color.red;
-        
-        }
+            ghosts[counter].SetActive(true);
+
+        /*  if (counter == ghosts.Length-1)
+          {
+              GameObject other = GameObject.FindGameObjectWithTag("MeGhost");
+              other.GetComponent<SphereCollider>().radius = 5;
+              other.GetComponent<MeshRenderer>().material.color = Color.red;
+
+          }*/
     }
 
 }
