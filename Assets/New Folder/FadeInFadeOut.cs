@@ -7,45 +7,39 @@ public class FadeInFadeOut : MonoBehaviour
 {
     public Image fadeEffect;
     public float timer;
+    public bool isFadeOut = false;
     Color c;
 
     private void Start()
     {
         c = fadeEffect.color;
-        c.a = 0f;
+        c.a = 0;
     }
 
+    private void Update()
+    {
+        RestartGame();
+    }
+    public void StartFadeIn()
+    {
+        StartCoroutine(FadeIn());
+    }
     IEnumerator FadeIn()
     {
         for(float i = 0.05f; i<=1; i+=0.05f)
         {
             c.a = i;
             fadeEffect.color = c;
-            yield return new WaitForSeconds(timer);
+            yield return new WaitForSeconds(1);
         }
+        isFadeOut = true;
     }
 
-    public void StartFadeIn()
+    void RestartGame()
     {
-        StartCoroutine(FadeIn());
-    }
-
-    IEnumerator FadeOut()
-    {
-        if(c.a == 1)
+        if(isFadeOut)
         {
-            for (float i = 0.05f; i < 0; i -= 0.05f)
-            {
-                c.a = i;
-                fadeEffect.color = c;
-                yield return new WaitForSeconds(timer);
-            }
+            Debug.Log("true");
         }
     }
-
-    public void StartFadeOut()
-    {
-        StartCoroutine(FadeOut());
-    }
-
 }
