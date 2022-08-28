@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhostCollector : MonoBehaviour
 {
     public GameObject[] ghosts;
     public int counter = 0;
     public GhostLoader Loader;
+    public Canvas tutorialCanvas;
+    public Canvas mainCanvas;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,15 +25,25 @@ public class GhostCollector : MonoBehaviour
     }
     public void PickGhost()
     {
-            ghosts[counter].SetActive(true);
+       ghosts[counter].SetActive(true);
 
-        /*  if (counter == ghosts.Length-1)
-          {
-              GameObject other = GameObject.FindGameObjectWithTag("MeGhost");
-              other.GetComponent<SphereCollider>().radius = 5;
-              other.GetComponent<MeshRenderer>().material.color = Color.red;
+        if(ghosts[0])
+        {
+            Time.timeScale = 0;
+            Debug.Log("canvas activated");
+            tutorialCanvas.gameObject.SetActive(true);
+            mainCanvas.gameObject.SetActive(false);
 
-          }*/
+            if (Input.GetKeyDown("escape"))
+            {
+                Time.timeScale = 1;
+            }
+        }
+        else
+        {
+            mainCanvas.gameObject.SetActive(true); ;
+
+        }
     }
 
 }
